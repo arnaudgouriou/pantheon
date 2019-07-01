@@ -5,30 +5,17 @@ helmDefaults:
   recreatePods: false
   force: false
   atomic: true
-#  args:
-#    - "--set config.blockchain.nodes.count=4"
+
 
 helmfiles:
   - ./helmfile.d/00-genesis-helmfile.yaml
   - ./helmfile.d/01-bootnode-helmfile.yaml
 
 
-
 releases:
   ##################################
   # Validators
   ##################################
-  - name: validator-0
-    labels:
-      component: validators
-    namespace: {{ .Namespace }}
-    chart: ./pantheon-node
-    values:
-      - ./values/validator.yaml
-    set:
-      - name: index
-        value: 0
-
   - name: validator-1
     labels:
       component: validators
@@ -39,3 +26,36 @@ releases:
     set:
       - name: index
         value: 1
+
+  - name: validator-2
+    labels:
+      component: validators
+    namespace: {{ .Namespace }}
+    chart: ./pantheon-node
+    values:
+      - ./values/validator.yaml
+    set:
+      - name: index
+        value: 2
+
+  - name: validator-3
+    labels:
+      component: validators
+    namespace: {{ .Namespace }}
+    chart: ./pantheon-node
+    values:
+      - ./values/validator.yaml
+    set:
+      - name: index
+        value: 3
+
+  - name: validator-4
+    labels:
+      component: validators
+    namespace: {{ .Namespace }}
+    chart: ./pantheon-node
+    values:
+      - ./values/validator.yaml
+    set:
+      - name: index
+        value: 4

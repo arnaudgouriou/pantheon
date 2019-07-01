@@ -1,6 +1,6 @@
 # Number of validators. Will not scale automatically unless keys etc.. are pre-provisionned.
 replicaCount: 1
-index: -1
+index: 0
 
 image:
   repository: pegasyseng/pantheon
@@ -34,14 +34,12 @@ validators:
   enabled: false
   # privKey:
   # pubKey: 0xb295c4242fb40c6e8ac7b831c916846050f191adc560b8098ba6ad513079571ec1be6e5e1a715857a13a91963097962e048c36c5863014b59e8f67ed3f667680
-  # address: 0x6dd110415a93f74c57964fdfe9a147f8204d907e
 
 
 node:
   logging: DEBUG
   p2p:
     enabled: true
-    #host: ${FIRST_PANTHEON_VALIDATORS_SERVICE_HOST}
     host: "127.0.0.1"
     port: 30303
     discovery: true
@@ -131,11 +129,11 @@ ingress_http:
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
   path: /
   # hosts:
-  #   - chain.apps.consensys.paris
+  #   - chain.apps.consensys
   # tls:
   #  - secretName: clique-tls
   #    hosts:
-  #      - chain.apps.consensys.paris
+  #      - chain.apps.consensys
 
 ingress_ws:
   enabled: false
@@ -173,12 +171,3 @@ ethstats:
   # image:
   #   repository: puppeth/ethstats
   #   tag: latest
-
-
-#keys:
-#  - privKey: '0x1f253c28290d182450adfe5eb7ef81e4a377f268698217eb7b17dbab71862224'
-#    pubKey: '0xb295c4242fb40c6e8ac7b831c916846050f191adc560b8098ba6ad513079571ec1be6e5e1a715857a13a91963097962e048c36c5863014b59e8f67ed3f667680'
-#    address: '0x6dd110415a93f74c57964fdfe9a147f8204d907e'
-#  - privKey: '0x1c31960fb148f915747ea2780ab4ab2a14a77ffdbc9ded1a403025d603f77863'
-#    pubKey: '0x2449f4c0f7eb17ceae1d03379896743e10888f2fb9f5a126d1f3a3cd75e19e78826e1f5e38105de713ec359ae097b75f1a5452abf267a2d9bf8dc2d246186d18'
-#    address: '0x7a5cde757578f00deb10416d39fdbfcce2dde099'
