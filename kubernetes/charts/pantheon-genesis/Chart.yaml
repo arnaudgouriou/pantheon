@@ -1,0 +1,13 @@
+apiVersion: v1
+name: pantheon-genesis
+version: 1.0.0
+description: Pantheon Genesis ConfigMap Helm chart for Kubernetes
+appVersion: "1.0"
+keywords:
+  - configuration
+  - genesis
+  - pantheon
+maintainers:
+  - name: arnaud.gouriou
+
+

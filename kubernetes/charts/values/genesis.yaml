@@ -1,0 +1,10 @@
+# Default values for genesys.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+config:
+  blockchain:
+    nodes:
+      generate: true
+      count: 3

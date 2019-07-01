@@ -1,0 +1,184 @@
+# Number of validators. Will not scale automatically unless keys etc.. are pre-provisionned.
+replicaCount: 1
+index: -1
+
+image:
+  repository: pegasyseng/pantheon
+  tag: "latest"
+  # Always | IfNotPresent
+  pullPolicy: IfNotPresent
+
+nameOverride:
+fullnameOverride:
+
+service:
+  type: ClusterIP
+
+pantheon:
+  persistentVolume:
+    enabled: false
+    # storageClass: gp2
+    # size: 4Gi
+    # annotations: {}
+
+# ConfigMap name
+genesis:
+  name: genesis-pantheon
+
+bootnode:
+  enabled: false
+  # privKey:
+  # pubKey: "655311c21e895988c8e8a533ff881e1a3f51903d4f76264b6db0fda23abf4688cf1acd1b916d103ccb2b5d28854ded5e86461252b7380ffcf2751df4ccd4bd3c"
+
+validators:
+  enabled: false
+  # privKey:
+  # pubKey: 0xb295c4242fb40c6e8ac7b831c916846050f191adc560b8098ba6ad513079571ec1be6e5e1a715857a13a91963097962e048c36c5863014b59e8f67ed3f667680
+  # address: 0x6dd110415a93f74c57964fdfe9a147f8204d907e
+
+
+node:
+  logging: DEBUG
+  p2p:
+    enabled: true
+    #host: ${FIRST_PANTHEON_VALIDATORS_SERVICE_HOST}
+    host: "127.0.0.1"
+    port: 30303
+    discovery: true
+    max_peers: 42
+  chain:
+    network: "MAINNET"
+    network_id: 303
+    sync_mode: "fast"
+    fast_sync: 5
+  miner:
+    enabled: true
+    coinbase: "0x0000000000000000000000000000000000000002"
+    extra_data: "0x444F4E27542050414E4943202120484F444C2C20484F444C2C20484F444C2021"
+    gas_price: "0"
+  tx_pool:
+    retention_hours: 999
+    max_size: 1024
+  http:
+    whitlist: '["*"]'
+  rpc:
+    enabled: true
+    host: "0.0.0.0"
+    port: 8545
+    api: '["DEBUG","ETH", "ADMIN", "WEB3", "IBFT", "NET"]'
+    cors_origins: '["all"]'
+    authentication_enabled: false
+  ws:
+    enabled: false
+    host: "0.0.0.0"
+    port: 8546
+    api: '["DEBUG", "ETH", "WEB3", "NET"]'
+    authentication_enabled: false
+  graphql:
+    enabled: false
+    host: "0.0.0.0"
+    port: 8547
+    cors_origins: '["all"]'
+  metrics:
+    enabled: false
+    host: "8.6.7.5"
+    port: 9303
+    category: ["RPC"]
+    image:
+      repository: marchand/pantheonexporter
+      tag: "0.2.5"
+    push:
+      enabled: false
+      host: "5.5.5.1"
+      port: 212
+      interval: 42
+      prometheus: "pantheon-everything"
+  privacy:
+    enabled: false
+    url: "http://127.0.0.1:8888"
+    precompiled_address: 9
+
+permissions:
+  enabled: false
+  nodes:
+    enabled: false
+    whitelist: ["enode://6f8a80d14311c39f35f516fa664deaaaa13e85b2f7493f37f6144d86991ec012937307647bd3b9a82abe2974e1407241d54947bbb39763a4cac9f77166ad92a0@192.168.0.9:4567","enode://6f8a80d14311c39f35f516fa664deaaaa13e85b2f7493f37f6144d86991ec012937307647bd3b9a82abe2974e1407241d54947bbb39763a4cac9f77166ad92a0@192.169.0.9:4568"]
+  nodes_contract:
+    enabled: false
+    address: "0x0000000000000000000000000000000000001234"
+  accounts:
+    enabled: false
+    whitelist: ["0x0000000000000000000000000000000000000009"]
+
+
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+resources: {}
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+ingress_http:
+  enabled: true
+  # annotations:
+  #   ingress.kubernetes.io/ssl-redirect: "true"
+  #   kubernetes.io/tls-acme: "true"
+  #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
+  path: /
+  # hosts:
+  #   - chain.apps.consensys.paris
+  # tls:
+  #  - secretName: clique-tls
+  #    hosts:
+  #      - chain.apps.consensys.paris
+
+ingress_ws:
+  enabled: false
+  # annotations:
+  #   ingress.kubernetes.io/ssl-redirect: "true"
+  #   kubernetes.io/tls-acme: "true"
+  #   nginx.ingress.kubernetes.io/rewrite-target: /
+  #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
+  # path: /ws
+  # hosts:
+  #   - chain.apps.consensys.paris
+  # tls:
+  #  - secretName: clique-tls
+  #    hosts:
+  #      - chain.apps.consensys.paris
+
+ingress_ethstats:
+  enabled: false
+  # annotations:
+  #   ingress.kubernetes.io/ssl-redirect: "true"
+  #   kubernetes.io/tls-acme: "true"
+  #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
+  # path: /
+  # hosts:
+  #   - ethstats.apps.consensys.paris
+  # tls:
+  #  - secretName: clique-ethstats-tls
+  #    hosts:
+  #      - ethstats.apps.consensys.paris
+
+ethstats:
+  enabled: false
+  # webSocketSecret: tralala
+  # nodeSelector: {}
+  # image:
+  #   repository: puppeth/ethstats
+  #   tag: latest
+
+
+#keys:
+#  - privKey: '0x1f253c28290d182450adfe5eb7ef81e4a377f268698217eb7b17dbab71862224'
+#    pubKey: '0xb295c4242fb40c6e8ac7b831c916846050f191adc560b8098ba6ad513079571ec1be6e5e1a715857a13a91963097962e048c36c5863014b59e8f67ed3f667680'
+#    address: '0x6dd110415a93f74c57964fdfe9a147f8204d907e'
+#  - privKey: '0x1c31960fb148f915747ea2780ab4ab2a14a77ffdbc9ded1a403025d603f77863'
+#    pubKey: '0x2449f4c0f7eb17ceae1d03379896743e10888f2fb9f5a126d1f3a3cd75e19e78826e1f5e38105de713ec359ae097b75f1a5452abf267a2d9bf8dc2d246186d18'
+#    address: '0x7a5cde757578f00deb10416d39fdbfcce2dde099'
