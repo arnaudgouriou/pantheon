@@ -23,11 +23,11 @@ ingress_http:
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
   path: /
   # hosts:
-  #   - chain.apps.consensys.paris
+  #   - k8s.localhost.lan
   # tls:
   #  - secretName: clique-tls
   #    hosts:
-  #      - chain.apps.consensys.paris
+  #      - k8s.localhost.lan
 
 ingress_ws:
   enabled: false
@@ -38,11 +38,11 @@ ingress_ws:
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
   # path: /ws
   # hosts:
-  #   - chain.apps.consensys.paris
+  #   - k8s.localhost.lan
   # tls:
   #  - secretName: clique-tls
   #    hosts:
-  #      - chain.apps.consensys.paris
+  #      - k8s.localhost.lan
 
 ingress_ethstats:
   enabled: false

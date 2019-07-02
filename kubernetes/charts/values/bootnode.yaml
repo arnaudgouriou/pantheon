@@ -23,18 +23,18 @@ resources: {}
   #  memory: 128Mi
 
 ingress_http:
-  enabled: true
+  enabled: false
   # annotations:
   #   ingress.kubernetes.io/ssl-redirect: "true"
   #   kubernetes.io/tls-acme: "true"
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
   path: /
   # hosts:
-  #   - chain.apps.consensys.paris
+  #   - k8s.localhost.lan
   # tls:
   #  - secretName: clique-tls
   #    hosts:
-  #      - chain.apps.consensys.paris
+  #      - k8s.localhost.lan
 
 ingress_ws:
   enabled: false
@@ -45,8 +45,8 @@ ingress_ws:
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
   # path: /ws
   # hosts:
-  #   - chain.apps.consensys.paris
+  #   - k8s.localhost.lan
   # tls:
   #  - secretName: clique-tls
   #    hosts:
-  #      - chain.apps.consensys.paris
+  #      - k8s.localhost.lan

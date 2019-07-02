@@ -123,13 +123,13 @@ resources: {}
 
 ingress_http:
   enabled: true
-  # annotations:
+  annotations: {}
   #   ingress.kubernetes.io/ssl-redirect: "true"
   #   kubernetes.io/tls-acme: "true"
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
   path: /
-  # hosts:
-  #   - chain.apps.consensys
+  hosts:
+    - k8s.localhost.lan
   # tls:
   #  - secretName: clique-tls
   #    hosts:
@@ -137,22 +137,22 @@ ingress_http:
 
 ingress_ws:
   enabled: false
-  # annotations:
+  annotations: {}
   #   ingress.kubernetes.io/ssl-redirect: "true"
   #   kubernetes.io/tls-acme: "true"
   #   nginx.ingress.kubernetes.io/rewrite-target: /
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
   # path: /ws
   # hosts:
-  #   - chain.apps.consensys.paris
+  #   - k8s.localhost.lan
   # tls:
   #  - secretName: clique-tls
   #    hosts:
-  #      - chain.apps.consensys.paris
+  #      - k8s.localhost.lan
 
 ingress_ethstats:
   enabled: false
-  # annotations:
+  annotations: {}
   #   ingress.kubernetes.io/ssl-redirect: "true"
   #   kubernetes.io/tls-acme: "true"
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
