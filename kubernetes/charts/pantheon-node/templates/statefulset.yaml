@@ -134,8 +134,14 @@ spec:
         {{- end }}
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: {{ .Values.pantheon.persistentVolume.storageClass | default "" | quote }}
         resources:
           requests:
             storage: "{{ .Values.pantheon.persistentVolume.size }}"
+        {{- if .Values.pantheon.persistentVolume.storageClass }}
+        {{- if (eq "-" .Values.pantheon.persistentVolume.storageClass) }}
+        storageClassName: ""
+        {{- else }}
+        storageClassName: "{{ .Values.pantheon.persistentVolume.storageClass }}"
+        {{- end }}
+        {{- end }}
   {{- end }}

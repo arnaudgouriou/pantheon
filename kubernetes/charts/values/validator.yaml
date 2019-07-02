@@ -15,6 +15,13 @@ resources: {}
   #  cpu: 100m
   #  memory: 128Mi
 
+pantheon:
+  persistentVolume:
+    enabled: false\
+    # storageClass: gp2
+    # size: 4Gi
+    # annotations: {}
+
 ingress_http:
   enabled: true
   # annotations:
@@ -65,10 +72,3 @@ ethstats:
   # image:
   #   repository: puppeth/ethstats
   #   tag: latest
-
-pantheon:
-  persistentVolume:
-    enabled: false
-    # storageClass: gp2
-    # size: 4Gi
-    # annotations: {}

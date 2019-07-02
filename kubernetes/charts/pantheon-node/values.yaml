@@ -17,8 +17,8 @@ service:
 pantheon:
   persistentVolume:
     enabled: false
+    size: 2Gi
     # storageClass: gp2
-    # size: 4Gi
     # annotations: {}
 
 # ConfigMap name
