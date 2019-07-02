@@ -17,7 +17,7 @@ resources: {}
 
 pantheon:
   persistentVolume:
-    enabled: false\
+    enabled: false
     # storageClass: gp2
     # size: 4Gi
     # annotations: {}
