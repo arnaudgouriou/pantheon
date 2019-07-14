@@ -28,12 +28,10 @@ genesis:
 bootnode:
   enabled: false
   # privKey:
-  # pubKey: "655311c21e895988c8e8a533ff881e1a3f51903d4f76264b6db0fda23abf4688cf1acd1b916d103ccb2b5d28854ded5e86461252b7380ffcf2751df4ccd4bd3c"
 
 validators:
   enabled: false
   # privKey:
-  # pubKey: 0xb295c4242fb40c6e8ac7b831c916846050f191adc560b8098ba6ad513079571ec1be6e5e1a715857a13a91963097962e048c36c5863014b59e8f67ed3f667680
 
 
 node:
